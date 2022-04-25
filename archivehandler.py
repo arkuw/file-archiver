@@ -17,10 +17,10 @@ def archive_file(fileinfo:FileInfo, archive_folder='.bak'):
         shutil.copyfile(fileinfo.path, backuppath)
 
 class ArchiveHandler(FileSystemEventHandler):
-    fileinfos: dict[str, FileInfo]
-    watchpaths: list[str]
+    fileinfos: dict #[str, FileInfo] # comment out for early python compatibility 
+    watchpaths: list #[str] 
     archive_folder: str
-    def __init__(self, watchlist: list[str], archive_folder:str ='.bak'):
+    def __init__(self, watchlist: list, archive_folder:str ='.bak'):
         self.fileinfos, self.watchpaths = {}, []
         self.archive_folder = archive_folder
         for f in watchlist:
